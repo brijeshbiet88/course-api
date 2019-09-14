@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>The XMLHttpRequest Object in Index</h1>
+
+<button type="button" onclick="loadDoc()">Click</button>
+
+<p id="demo"></p>
+
+
+<script>
+function loadDoc() {
+	var xhttp = new XMLHttpRequest();
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4) {
+	      document.getElementById("demo").innerHTML = this.responseText;
+	    }else{
+		   document.getElementById("demo").innerHTML = "There is some problem : State "+this.readyState+" Status : "+this.status;	
+		}
+	  };
+	  xhttp.open("POST", "http://localhost:8080/courseapi/test2", true);
+	  xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+	  var test = {
+					name : "Brjesh",
+					password : "adsk"
+	  			 }
+	  xhttp.send(JSON.stringify(test));
+	  xhttp.send();
+    
+}
+</script>
+
+</body>
+</html>

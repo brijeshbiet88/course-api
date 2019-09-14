@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>The XMLHttpRequest Object</h1>
+
+<button type="button" onclick="loadDoc()">Click</button>
+
+<p id="demo"></p>
+
+
+<script>
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4) {
+      document.getElementById("demo").innerHTML = this.responseText;
+    }else{
+	   document.getElementById("demo").innerHTML = "There is some problem : State "+this.readyState+" Status : "+this.status;	
+	}
+  };
+  xhttp.open("GET", "http://localhost:8080/courseapi/hi?username=Brijesh Ji", true);
+  xhttp.send();
+}
+</script>
+
+</body>
+</html>
